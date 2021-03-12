@@ -22,6 +22,7 @@ class Select extends Component {
   static propTypes = {
     onSelect: PropTypes.func,
     buttonStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    menuTextStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     label: PropTypes.string,
     selectedItem: PropTypes.node,
     menuItems: PropTypes.array,
@@ -39,7 +40,7 @@ class Select extends Component {
     visible: false,
   };
 
-  onSelect = item => {
+  onSelect = (item) => {
     this.props.onSelect(item);
     this.hideMenu();
   };
@@ -68,6 +69,7 @@ class Select extends Component {
       theme,
       testID,
       fullWidth,
+      menuTextStyle,
     } = this.props;
 
     const { visible } = this.state;
@@ -144,6 +146,7 @@ class Select extends Component {
                   text={item.name}
                   onPress={() => this.onSelect(item)}
                   style={{ flex: 1 }}
+                  textStyle={menuTextStyle}
                 />
               );
             }}
