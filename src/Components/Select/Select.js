@@ -110,7 +110,7 @@ class Select extends Component {
               buttonStyle,
             ]}
             underlayColor={'transparent'}>
-            <View style={styles.innerView}>
+            <View pointerEvents="box-only" style={styles.innerView}>
               <TextField
                 type={type ? type : 'flat'}
                 label={label}
