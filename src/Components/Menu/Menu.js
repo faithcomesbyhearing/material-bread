@@ -53,16 +53,16 @@ class Menu extends Component {
     }
   }
 
-  onModalMenuLayout = e => {
+  onModalMenuLayout = (e) => {
     const { width } = e.nativeEvent.layout;
+
     this.setState({
       modalMenuWidth: width,
     });
   };
 
-  onButtonLayout = e => {
+  updateButtonPosition = (e) => {
     const { width, height } = e.nativeEvent.layout;
-
     let locationX, locationY;
 
     if (Platform.OS === 'web') {
@@ -88,8 +88,13 @@ class Menu extends Component {
     }
   };
 
-  onMenuLayout = e => {
+  onButtonLayout = (e) => {
+    this.updateButtonPosition(e);
+  };
+
+  onMenuLayout = (e) => {
     const { width, height } = e.nativeEvent.layout;
+    this.updateButtonPosition(e);
 
     this.setState({
       initialWidth: width,
@@ -219,7 +224,7 @@ class Menu extends Component {
       <View testID={testID}>
         <View
           onLayout={this.onButtonLayout}
-          ref={ref => {
+          ref={(ref) => {
             this.marker = ref;
           }}
           style={{
